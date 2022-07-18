@@ -1,0 +1,31 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    {% tailwind_css %}
+    <script src="{% static 'myJS.js' %}" defer></script>
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+  </body>
+  <!-- Bottom Nav -->
+  <div class="btm-nav bg-base-200">
+    <button onclick="location.href = '/'" class="{% if nbar == 'home' %}active{% endif %}">
+      <i class="fa-solid fa-house"></i>
+    </button>
+    <button onclick="location.href = '/stock'" class="{% if nbar == 'stock' or nbar == 'scan_in' or nbar == 'scan_out' %}active{% endif %}">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </button>
+    <button onclick="location.href = '/people'" class="{% if nbar == 'people' or nbar == 'members' or nbar == 'add_member' %}active{% endif %}">
+      <i class="fa-solid fa-users"></i>
+    </button>
+    <button onclick="location.href = '/reports'" class="{% if nbar == 'reports' %}active{% endif %}">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</html>
